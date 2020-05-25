@@ -1,11 +1,11 @@
 ﻿using LojaOnline.Dominio.ObjetoDeValor;
 using System;
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace LojaOnline.Dominio.Entidades
 {
-    public class Pedido
+    public class Pedido : Entidade
     {
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
@@ -24,5 +24,17 @@ namespace LojaOnline.Dominio.Entidades
         /// Pedido deve ter pelo menos um item de pedido ou muitos itens de pedidos
         /// </summary>
         public ICollection<ItemPedido>  ItensPedidos { get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+
+            if (!ItensPedidos.Any())         
+                AdicionarCritica("ERRO! - Pedido nao pode ficar sem item de pedido");
+
+            if (string.IsNullOrEmpty(CEP))
+                AdicionarCritica("ERRO! - CEP deve estar preenchido");
+
+        }
     }
 }
