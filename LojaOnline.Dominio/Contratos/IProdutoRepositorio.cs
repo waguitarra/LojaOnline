@@ -2,7 +2,7 @@
 
 namespace LojaOnline.Dominio.Contratos
 {
-    public interface IProdutoRepositor : IBaseRepositorio<Produto>
+    public interface IProdutoRepositorio : IBaseRepositorio<Produto>
     {
     }
 }

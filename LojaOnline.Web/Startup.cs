@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using LojaOnline.Repositorio.Contexto;
+using Microsoft.EntityFrameworkCore;
 
 namespace LojaOnline.Web
 {
@@ -12,16 +14,23 @@ namespace LojaOnline.Web
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("config.json",optional:false, reloadOnChange: true); // responsavel por conexao com banco de datos
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {//wagner
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            var connectionString = Configuration.GetConnectionString("LojaOnlineDb");
+            services.AddDbContext<LojaOnlineButContexto>(option => 
+                                                                option.UseMySql(connectionString,
+                                                                                        m => m.MigrationsAssembly("LojaOnline.Repositorio")));
+        
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
