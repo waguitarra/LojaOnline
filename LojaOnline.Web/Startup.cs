@@ -28,7 +28,8 @@ namespace LojaOnline.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connectionString = Configuration.GetConnectionString("LojaOnlineDb");
             services.AddDbContext<LojaOnlineButContexto>(option => 
-                                                                option.UseMySql(connectionString,
+                                                                option.UseLazyLoadingProxies()
+                                                                .UseMySql(connectionString,
                                                                                         m => m.MigrationsAssembly("LojaOnline.Repositorio")));
         
             // In production, the Angular files will be served from this directory

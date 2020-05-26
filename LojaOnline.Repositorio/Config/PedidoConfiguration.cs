@@ -57,6 +57,10 @@ namespace LojaOnline.Repositorio.Config
                 .Property(p => p.FormaPagamentoId)
                 .IsRequired()
                 ;
+
+            builder
+                .HasOne(u => u.Usuario)
+                ;
         }
     
     }

@@ -33,6 +33,12 @@ namespace LojaOnline.Repositorio.Config
                 .IsRequired()
                 .HasMaxLength(50)
                 ;
+
+            //Mapeando e configurando usario para muitos pedidos "HasMany" = parta muitos
+            builder
+                .HasMany(u => u.Pedidos)
+                .WithOne(p => p.Usuario);
+                
         }
     }
 }
