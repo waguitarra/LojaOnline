@@ -3,14 +3,16 @@ using System;
 using LojaOnline.Repositorio.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LojaOnline.Repositorio.Migrations
 {
     [DbContext(typeof(LojaOnlineButContexto))]
-    partial class LojaOnlineButContextoModelSnapshot : ModelSnapshot
+    [Migration("20200526144136_CargaFormaPagamento")]
+    partial class CargaFormaPagamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

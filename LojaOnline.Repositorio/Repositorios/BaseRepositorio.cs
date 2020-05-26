@@ -1,44 +1,52 @@
 ﻿using LojaOnline.Dominio.Contratos;
+using LojaOnline.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace LojaOnline.Repositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-        public BaseRepositorio()
-        {
 
+        protected readonly LojaOnlineButContexto LojaOnlineButContexto;
+
+        public BaseRepositorio(LojaOnlineButContexto lojaOnlineButContexto)
+        {
+            LojaOnlineButContexto = lojaOnlineButContexto;
         }
+
         public void Adicionar(TEntity entity)
         {
-            throw new NotImplementedException();
+            LojaOnlineButContexto.Set<TEntity>().Add(entity);
+            LojaOnlineButContexto.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new NotImplementedException();
+            LojaOnlineButContexto.Set<TEntity>().Update(entity);
+            LojaOnlineButContexto.SaveChanges();
         }
 
+        public void Dispose()
+        {
+            LojaOnlineButContexto.Dispose();
+        }
 
         public TEntity ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return LojaOnlineButContexto.Set<TEntity>().Find(id);
         }
 
-        public IEquatable<TEntity> ObterTodos()
+        public IEnumerable<TEntity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return LojaOnlineButContexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            throw new NotImplementedException();
-        }
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            LojaOnlineButContexto.Remove(entity);
+            LojaOnlineButContexto.SaveChanges();
         }
     }
 }

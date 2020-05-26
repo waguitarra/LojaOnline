@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LojaOnline.Dominio.Contratos
 {
@@ -6,8 +7,9 @@ namespace LojaOnline.Dominio.Contratos
     {
         void Adicionar(TEntity entity);
         TEntity ObterPorId(int id);
-        IEquatable<TEntity> ObterTodos();
+        IEnumerable<TEntity> ObterTodos();
         void Atualizar(TEntity entity);
         void Remover(TEntity entity);
+      
     }
 }
