@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using LojaOnline.Repositorio.Contexto;
 using Microsoft.EntityFrameworkCore;
 using LojaOnline.Dominio.Contratos;
+using LojaOnline.Repositorio.Repositorios;
 
 namespace LojaOnline.Web
 {
@@ -33,7 +34,7 @@ namespace LojaOnline.Web
                                                                 .UseMySql(connectionString,
                                                                                         m => m.MigrationsAssembly("LojaOnline.Repositorio")));
             //Mapeamento para API em Controller .Web
-            services.AddScoped<IProdutoRepositorio, IProdutoRepositorio>();
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
         
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
