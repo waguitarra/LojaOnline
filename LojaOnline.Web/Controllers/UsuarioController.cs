@@ -23,7 +23,7 @@ namespace LojaOnline.Web.Controllers
             try
             {
                 //Consultar na base de Dados
-                var usuarioRetorno = _usuarioRepositorio.ObterPorId(1);
+                var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
 
                 if (usuarioRetorno != null)
                 {

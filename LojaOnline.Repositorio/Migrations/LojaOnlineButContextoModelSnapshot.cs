@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LojaOnline.Repositorio.Migrations
 {
-    [DbContext(typeof(LojaOnlineButContexto))]
-    partial class LojaOnlineButContextoModelSnapshot : ModelSnapshot
+    [DbContext(typeof(LojaOnlineContexto))]
+    partial class LojaOnlineContextoModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

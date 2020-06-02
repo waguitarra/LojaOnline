@@ -9,44 +9,44 @@ namespace LojaOnline.Repositorio.Repositorios
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
 
-        protected readonly LojaOnlineButContexto LojaOnlineButContexto;
+        protected readonly LojaOnlineContexto LojaOnlineContexto;
 
-        public BaseRepositorio(LojaOnlineButContexto lojaOnlineButContexto)
+        public BaseRepositorio(LojaOnlineContexto lojaOnlineContexto)
         {
-            LojaOnlineButContexto = lojaOnlineButContexto;
+            LojaOnlineContexto = lojaOnlineContexto;
         }
 
         public void Adicionar(TEntity entity)
         {
-            LojaOnlineButContexto.Set<TEntity>().Add(entity);
-            LojaOnlineButContexto.SaveChanges();
+            LojaOnlineContexto.Set<TEntity>().Add(entity);
+            LojaOnlineContexto.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            LojaOnlineButContexto.Set<TEntity>().Update(entity);
-            LojaOnlineButContexto.SaveChanges();
+            LojaOnlineContexto.Set<TEntity>().Update(entity);
+            LojaOnlineContexto.SaveChanges();
         }
 
         public void Dispose()
         {
-            LojaOnlineButContexto.Dispose();
+            LojaOnlineContexto.Dispose();
         }
 
         public TEntity ObterPorId(int id)
         {
-            return LojaOnlineButContexto.Set<TEntity>().Find(id);
+            return LojaOnlineContexto.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            return LojaOnlineButContexto.Set<TEntity>().ToList();
+            return LojaOnlineContexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            LojaOnlineButContexto.Remove(entity);
-            LojaOnlineButContexto.SaveChanges();
+            LojaOnlineContexto.Remove(entity);
+            LojaOnlineContexto.SaveChanges();
         }
     }
 }

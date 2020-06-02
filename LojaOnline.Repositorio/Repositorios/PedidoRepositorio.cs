@@ -6,7 +6,7 @@ namespace LojaOnline.Repositorio.Repositorios
 {
     public class PedidoRepositorio : BaseRepositorio<Pedido>, IPedidoRepositorio
     {
-        public PedidoRepositorio(LojaOnlineButContexto lojaOnlineButContexto) : base(lojaOnlineButContexto)
+        public PedidoRepositorio(LojaOnlineContexto lojaOnlineContexto) : base(lojaOnlineContexto)
         {
 
         }

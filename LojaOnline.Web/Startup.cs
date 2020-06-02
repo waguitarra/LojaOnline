@@ -29,7 +29,7 @@ namespace LojaOnline.Web
         {//wagner
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connectionString = Configuration.GetConnectionString("LojaOnlineDb");
-            services.AddDbContext<LojaOnlineButContexto>(option => 
+            services.AddDbContext<LojaOnlineContexto>(option => 
                                                                 option.UseLazyLoadingProxies()
                                                                 .UseMySql(connectionString,
                                                                                         m => m.MigrationsAssembly("LojaOnline.Repositorio")));

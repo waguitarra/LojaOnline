@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LojaOnline.Repositorio.Migrations
 {
-    [DbContext(typeof(LojaOnlineButContexto))]
+    [DbContext(typeof(LojaOnlineContexto))]
     [Migration("20200526144136_CargaFormaPagamento")]
     partial class CargaFormaPagamento
     {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LojaOnline.Repositorio.Contexto
 {
-    public class LojaOnlineButContexto : DbContext
+    public class LojaOnlineContexto : DbContext
     {  
 
         public DbSet<Usuario> Usuarios { get; set; }
@@ -14,7 +14,7 @@ namespace LojaOnline.Repositorio.Contexto
         public DbSet<ItemPedido> ItemPedidos { get; set; }
         public DbSet<FormaPagamento> FormaPagamentos { get; set; }
 
-        public LojaOnlineButContexto(DbContextOptions options) : base(options)
+        public LojaOnlineContexto(DbContextOptions options) : base(options)
         {
 
         }
