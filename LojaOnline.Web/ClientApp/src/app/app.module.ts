@@ -9,10 +9,10 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { LoginComponent } from './usuario/login/login.component';
-import { CadastroComponent } from './usuario/cadastro/cadastro.component';
 import { GuardaRotas } from './autorizacao/guarda.rotas';
-import { Usuario } from './model/usuario';
 import { UsuarioService } from './servicos/usuario/usuario.service';
+import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
+import { ProdutoService } from './servicos/produto/produto.service';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { UsuarioService } from './servicos/usuario/usuario.service';
       HomeComponent,
       ProdutoComponent,
       LoginComponent,
-      CadastroComponent
+      CadastroUsuarioComponent
 
    ],
    imports: [
@@ -33,10 +33,11 @@ import { UsuarioService } from './servicos/usuario/usuario.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'produto', component: ProdutoComponent , canActivate: [GuardaRotas]},
       { path: 'login', component: LoginComponent},
+      { path: 'novo-usuario', component: CadastroUsuarioComponent }
 
     ])
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, ProdutoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
