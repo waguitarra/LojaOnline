@@ -43,9 +43,12 @@
 
 
     <button class="btn btn-primary btn-block mb-2" type="submit" (click)="entrar()">Entrar</button>
-    <img src="../../../assets/img/logoImage.png" title="" width="50%" alt="" sizes="" srcset="">
-    <div class="alert alert-primary" role="alert" *ngIf="usarioAutenticado">
-      Usuario autenticado
+
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
     </div>
+
+    <img src="../../../assets/img/logoImage.png" title="" width="50%" alt="" sizes="" srcset="">
+
   </form> 
 </div>

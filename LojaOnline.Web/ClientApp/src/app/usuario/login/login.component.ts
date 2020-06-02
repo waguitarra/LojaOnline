@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public usuario;
   public usarioAutenticado: boolean;
   public returnUrl: string;
+  public mensagem: string;
 
   constructor( public router: Router, private activateRouter: ActivatedRoute,
                                       private usuarioService: UsuarioService) {
@@ -24,14 +25,22 @@ export class LoginComponent implements OnInit {
   }
 
   entrar() {
-
     this.usuarioService.verificarUsuario(this.usuario)
     .subscribe( // retorno do serviço
-      data => {
+      usuario_jason => {
+        //essa linha será executada no caso de retorno de sem erros  
 
+        this.usuarioService.usuario = usuario_jason;
+
+        if (this.returnUrl == null) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate([this.returnUrl]);
+        }
       },
       err => {
-
+        console.log(err.error);
+        this.mensagem = err.error;
       }
     );
 

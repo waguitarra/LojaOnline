@@ -35,6 +35,7 @@ namespace LojaOnline.Web
                                                                                         m => m.MigrationsAssembly("LojaOnline.Repositorio")));
             //Mapeamento para API em Controller .Web
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
         
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
