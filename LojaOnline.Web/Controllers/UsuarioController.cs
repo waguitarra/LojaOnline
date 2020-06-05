@@ -38,10 +38,17 @@ namespace LojaOnline.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public IActionResult Post([FromBody] Usuario usuario)
         {
             try
             {
+                var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
+                
+                if (usuarioCadastrado != null)               
+                    return BadRequest("Usuario já cadastrado no sistema");    
+                
+                _usuarioRepositorio.Adicionar(usuario);
+                
                 return Ok();
             }
             catch (Exception ex)

@@ -31,7 +31,7 @@ import { ProdutoService } from './servicos/produto/produto.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'produto', component: ProdutoComponent , canActivate: [GuardaRotas]},
+      { path: 'produto', component: ProdutoComponent},
       { path: 'login', component: LoginComponent},
       { path: 'novo-usuario', component: CadastroUsuarioComponent }
 
@@ -42,5 +42,5 @@ import { ProdutoService } from './servicos/produto/produto.service';
 })
 export class AppModule { }
 
-
+//{ path: 'produto', component: ProdutoComponent , canActivate: [GuardaRotas]},
 //BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

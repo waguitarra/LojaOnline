@@ -16,5 +16,10 @@ namespace LojaOnline.Repositorio.Repositorios
         {
             return LojaOnlineContexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
         }
+
+        public Usuario Obter(string email)
+        {
+             return LojaOnlineContexto.Usuarios.FirstOrDefault(u => u.Email == email);
+        }
     }
 }

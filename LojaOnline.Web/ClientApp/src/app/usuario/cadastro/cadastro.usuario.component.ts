@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/servicos/usuario/usuario.service';
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'cadastro-usuario',
     templateUrl: './../cadastro/cadastro.usuario.component.html',
     styleUrls: ['./cadastro.usuario.component.css']
@@ -11,7 +12,7 @@ import { UsuarioService } from 'src/app/servicos/usuario/usuario.service';
 export class CadastroUsuarioComponent implements OnInit {
 
     public usuario: Usuario;
-    public usarioAutenticado: boolean;
+    public usuarioCadastrado: boolean;
     public returnUrl: string;
     public mensagem: string;
     public ativar_spinner: boolean;
@@ -25,11 +26,18 @@ export class CadastroUsuarioComponent implements OnInit {
     }
 
     public cadastrar() {
-
-       /* this.usuarioServico.cadastrarUsuario(this.usuario)
+        this.ativar_spinner = true;
+        this.usuarioServico.cadastrarUsuario(this.usuario)
             .subscribe(
-                usuarioJson => {},
-                e => {}
-            );*/
+                usuarioJson => {//Operacao bem sucedida
+                    this.usuarioCadastrado = true;
+                    this.mensagem = '';
+                    this.ativar_spinner = false;
+                },
+                e => {
+                    this.mensagem = e.error;
+                    this.ativar_spinner = false;
+                }
+        );
     }
 }

@@ -9,6 +9,7 @@ using LojaOnline.Repositorio.Contexto;
 using Microsoft.EntityFrameworkCore;
 using LojaOnline.Dominio.Contratos;
 using LojaOnline.Repositorio.Repositorios;
+using Microsoft.AspNetCore.Http;
 
 namespace LojaOnline.Web
 {
@@ -28,6 +29,8 @@ namespace LojaOnline.Web
         public void ConfigureServices(IServiceCollection services)
         {//wagner
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<IHttpContextAccessor , HttpContextAccessor>(); // Para Imagens 
+
             var connectionString = Configuration.GetConnectionString("LojaOnlineDb");
             services.AddDbContext<LojaOnlineContexto>(option => 
                                                                 option.UseLazyLoadingProxies()

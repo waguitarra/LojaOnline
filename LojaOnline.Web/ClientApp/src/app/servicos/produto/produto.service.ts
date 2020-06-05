@@ -1,7 +1,8 @@
 import { Injectable, Inject, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Produto } from 'src/app/model/produto';
+import { Produto } from '../../model/produto';
+
 
 
 @Injectable({
@@ -9,6 +10,7 @@ import { Produto } from 'src/app/model/produto';
 })
 
 export class ProdutoService implements OnInit {
+
 
   private _baseUrl: string;
   public produtos: Produto[];
@@ -48,6 +50,15 @@ export class ProdutoService implements OnInit {
 
   public obterProdutos(produtoId: number): Observable<Produto> {
     return this.http.get<Produto>(this._baseUrl + 'api/produto/obter');
+  }
+
+  // tslint:disable-next-line: comment-format
+  //enviar imagem
+  public enviarArquivo(arquivosSelecionado: File): Observable<string> {
+    const formData: FormData = new FormData();
+    formData.append('arquivoEnviado', arquivosSelecionado, arquivosSelecionado.name);
+
+    return this.http.post<string>(this._baseUrl + 'api/produto/enviarArquivo' , formData);
   }
 
 }

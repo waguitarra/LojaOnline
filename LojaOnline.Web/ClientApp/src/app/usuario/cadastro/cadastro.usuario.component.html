@@ -86,9 +86,6 @@
             Sobre Nome nao está nao formato correto
         </div>      
       </div>
-
-      
-  
   
       <button class="btn btn-primary btn-block mb-2" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner" >
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
@@ -98,6 +95,9 @@
       
       <div class="alert alert-danger" *ngIf="mensagem">
         {{mensagem}}
+      </div>
+      <div class="alert alert-success" *ngIf ="usuarioCadastrado">
+        Usuario cadastrado com sucess! <a class="alert-link"[routerLink] ='["/login"]'>Click aqui</a> para entrar no sistema com a sua conta
       </div>
       <img src="../../../assets/img/logoImage.png" title="" width="50%" alt="" sizes="" srcset="">
 
