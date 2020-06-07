@@ -43,6 +43,11 @@ namespace LojaOnline.Web.Controllers
         {
             try
             {
+                produto.Validate();
+                if (!produto.EhValido)
+                {
+                    return BadRequest(produto.ObterMensagensValidacao());
+                }
                 _produtoRepositorio.Adicionar(produto); // envia uma lista de produto
                 return Created("api/produto", produto); // o produto foi creato em banco sem nenhum erro
             }

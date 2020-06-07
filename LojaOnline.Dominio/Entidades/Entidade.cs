@@ -20,6 +20,11 @@ namespace LojaOnline.Dominio.Entidades
         {
             mensagemValidacao.Add(mensagem);
         }
+        
+        public string ObterMensagensValidacao()
+        {
+            return string.Join(". ", mensagemValidacao); // Criando uma lista unica de mensagens
+        }
 
         public abstract void Validate();
         public bool EhValido

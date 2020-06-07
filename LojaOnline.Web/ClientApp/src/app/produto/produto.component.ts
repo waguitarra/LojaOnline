@@ -27,8 +27,7 @@ export class ProdutoComponent implements OnInit {
     this.produtoServico.enviarArquivo(this.arquivosSelecionado)
       .subscribe(
         nomeArquivo => {
-          this.produto.nomeArquivo = nomeArquivo;
-          alert(this.produto.nomeArquivo);
+          this.produto.nomeArquivo = nomeArquivo; 
           console.log(nomeArquivo);
           this.ativar_spinner = false;
       },
@@ -40,15 +39,27 @@ export class ProdutoComponent implements OnInit {
   }
 
   public cadastrar() {
+    this.ativaEspera();
     this.produtoServico.cadastrar(this.produto)
     .subscribe(
       produtoJson => {
         console.log(produtoJson);
+        this.desativarEspera();
       },
         e => {
-          console.log(e.console.error);
+          console.log(e.error);
+          this.mensagem = e.error;
+          this.desativarEspera();
       }
     );
+  }
+
+  public ativaEspera() {
+    this.ativar_spinner = true;
+  }
+
+  public desativarEspera() {
+    this.ativar_spinner = false;
   }
 
 }

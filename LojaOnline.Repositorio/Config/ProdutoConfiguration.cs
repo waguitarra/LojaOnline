@@ -27,6 +27,7 @@ namespace LojaOnline.Repositorio.Config
 
             builder
                 .Property(p => p.Preco)
+                .HasColumnType("decimal(19,2)")
                 .IsRequired()       
                 ;
 
